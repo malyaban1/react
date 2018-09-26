@@ -1,10 +1,8 @@
 import * as _ from 'lodash'
-import * as cx from 'classnames'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 
 import { childrenExist, createShorthandFactory, customPropTypes, UIComponent } from '../../lib'
-import Icon from '../Icon'
 import MenuItemLink from './MenuItemLink'
 
 import { MenuItemBehavior } from '../../lib/accessibility'
@@ -146,7 +144,7 @@ class MenuItem extends UIComponent<Extendable<IMenuItemProps>, any> {
   }
 
   renderComponent({ ElementType, classes, accessibility, variables, rest }) {
-    const { children, content, icon, onClick } = this.props
+    const { children, content, icon } = this.props
     const { iconOnly, pills, pointing, type, underlined, vertical, index, active } = this.props
 
     return (

@@ -2,15 +2,8 @@ import * as _ from 'lodash'
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
 
-import { childrenExist, createShorthandFactory, customPropTypes, UIComponent } from '../../lib'
-import {
-  ComponentEventHandler,
-  Extendable,
-  ItemShorthand,
-  ReactChildren,
-} from '../../../types/utils'
-import MenuItem from './MenuItem'
-import * as cx from 'classnames'
+import { createShorthandFactory, customPropTypes, UIComponent } from '../../lib'
+import { Extendable } from '../../../types/utils'
 import Icon from '../Icon/Icon'
 import { MenuItemBehavior } from '../../lib/accessibility'
 import { Accessibility, AccessibilityActionHandlers } from '../../lib/accessibility/interfaces'

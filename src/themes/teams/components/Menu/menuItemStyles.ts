@@ -7,11 +7,6 @@ import {
 import { IMenuVariables } from './menuVariables'
 import { IMenuItemProps } from '../../../../components/Menu/MenuItem'
 
-const underlinedItem = (color): ICSSInJSStyle => ({
-  borderBottom: `solid ${pxToRem(4)} ${color}`,
-  transition: 'color .1s ease',
-})
-
 const itemSeparator: ComponentPartStyle<IMenuItemProps, IMenuVariables> = ({
   props,
   variables,
