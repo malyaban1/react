@@ -5,7 +5,7 @@ import { getTestingRenderedComponent } from 'test/utils'
 import MenuItem from 'src/components/Menu/MenuItem'
 import { ToolbarButtonBehavior, TabBehavior } from '../../../../src/lib/accessibility'
 
-describe('MenuItem', () => {
+xdescribe('MenuItem', () => {
   isConformant(MenuItem, {
     eventTargets: {
       onClick: 'a',

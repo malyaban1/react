@@ -1,5 +1,6 @@
 import * as cx from 'classnames'
 import * as React from 'react'
+import * as _ from 'lodash'
 import { FelaTheme } from 'react-fela'
 
 import callable from './callable'
@@ -135,10 +136,18 @@ const renderComponent = <P extends {}>(
           },
         )
         const accessibility: Accessibility = getAccessibility(stateAndProps, actionHandlers)
-        const rest = getUnhandledProps(
+        const rest: any = getUnhandledProps(
           { handledProps: [...handledProps, ...accessibility.handledProps] },
           props,
         )
+        if (rest.children) {
+          const compactChildren = _.compact(rest.children)
+          if (compactChildren.length > 0) {
+            rest.children = compactChildren
+          } else {
+            delete rest.children
+          }
+        }
         const styleParam: ComponentStyleFunctionParam = {
           props: stateAndProps,
           variables: resolvedVariables,

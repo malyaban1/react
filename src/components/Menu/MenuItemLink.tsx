@@ -1,48 +1,24 @@
 import * as _ from 'lodash'
-import * as cx from 'classnames'
-import * as PropTypes from 'prop-types'
 import * as React from 'react'
+import * as PropTypes from 'prop-types'
 
 import { childrenExist, createShorthandFactory, customPropTypes, UIComponent } from '../../lib'
-import Icon from '../Icon'
-import MenuItemLink from './MenuItemLink'
-
-import { MenuItemBehavior } from '../../lib/accessibility'
-import { Accessibility, AccessibilityActionHandlers } from '../../lib/accessibility/interfaces'
-
-import { ComponentVariablesInput, ComponentPartStyle } from '../../../types/theme'
 import {
   ComponentEventHandler,
   Extendable,
   ItemShorthand,
   ReactChildren,
 } from '../../../types/utils'
+import MenuItem from './MenuItem'
+import * as cx from 'classnames'
+import Icon from '../Icon/Icon'
+import { MenuItemBehavior } from '../../lib/accessibility'
+import { Accessibility, AccessibilityActionHandlers } from '../../lib/accessibility/interfaces'
 
-export interface IMenuItemProps {
-  accessibility?: Accessibility
-  active?: boolean
-  as?: any
-  children?: ReactChildren
-  className?: string
-  content?: any
-  disabled?: boolean
-  icon?: ItemShorthand
-  iconOnly?: boolean
-  index?: number
-  onClick?: ComponentEventHandler<IMenuItemProps>
-  pills?: boolean
-  pointing?: boolean | 'start' | 'end'
-  type?: 'primary' | 'secondary'
-  underlined?: boolean
-  vertical?: boolean
-  styles?: ComponentPartStyle
-  variables?: ComponentVariablesInput
-}
+class MenuItemLink extends UIComponent<Extendable<{}>, {}> {
+  static displayName = 'MenuItemLink'
 
-class MenuItem extends UIComponent<Extendable<IMenuItemProps>, any> {
-  static displayName = 'MenuItem'
-
-  static className = 'ui-menu__item'
+  static className = 'ui-menu__itemlink'
 
   static create: Function
 
@@ -112,7 +88,7 @@ class MenuItem extends UIComponent<Extendable<IMenuItemProps>, any> {
   }
 
   static defaultProps = {
-    as: 'li',
+    as: 'a',
     accessibility: MenuItemBehavior as Accessibility,
   }
 
@@ -145,44 +121,27 @@ class MenuItem extends UIComponent<Extendable<IMenuItemProps>, any> {
     _.invoke(this.props, 'onClick', e, this.props)
   }
 
-  renderComponent({ ElementType, classes, accessibility, variables, rest }) {
-    const { children, content, icon, onClick } = this.props
-    const { iconOnly, pills, pointing, type, underlined, vertical, index, active } = this.props
+  public renderComponent({ ElementType, classes, accessibility, rest }) {
+    const { content, icon } = this.props
 
     return (
       <ElementType
         className={classes.root}
-        {...accessibility.attributes.root}
-        {...accessibility.keyHandlers.root}
+        onClick={this.handleClick}
+        {...accessibility.attributes.anchor} // FIXME: separate behavior?
+        {...accessibility.keyHandlers.anchor}
         {...rest}
       >
-        {childrenExist(children)
-          ? children
-          : MenuItemLink.create(content || (icon && {}), {
-              defaultProps: {
-                iconOnly,
-                icon,
-                pills,
-                pointing,
-                type,
-                underlined,
-                vertical,
-                variables,
-                index,
-                active,
-                onClick: this.handleClick,
-              },
-              overrideProps: predefinedProps => ({
-                onClick: (e, itemProps) => {
-                  _.invoke(predefinedProps, 'onClick', e, itemProps)
-                },
-              }),
-            })}
+        {icon &&
+          Icon.create(this.props.icon, {
+            defaultProps: { xSpacing: !!content ? 'after' : 'none' },
+          })}
+        {content}
       </ElementType>
     )
   }
 }
 
-MenuItem.create = createShorthandFactory(MenuItem, content => ({ content }))
+MenuItemLink.create = createShorthandFactory(MenuItemLink, content => ({ content }))
 
-export default MenuItem
+export default MenuItemLink
