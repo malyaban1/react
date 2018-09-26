@@ -1,6 +1,17 @@
+//
+// Themes
+//
 import * as themes from './themes'
 export { themes }
 
+//
+// Utilities
+//
+export { default as mergeThemes } from './lib/mergeThemes'
+
+//
+// Components
+//
 export { default as Accordion } from './components/Accordion'
 export { default as Attachment } from './components/Attachment'
 export { default as Avatar } from './components/Avatar'
@@ -22,25 +33,20 @@ export { default as List } from './components/List'
 export { ListItem } from './components/List'
 export { default as Menu } from './components/Menu'
 export { MenuItem } from './components/Menu'
+export { default as Portal } from './components/Portal'
+export { default as Popup } from './components/Popup'
+export { PopupContent } from './components/Popup'
 export { default as Provider } from './components/Provider'
 export { default as ProviderConsumer } from './components/Provider/ProviderConsumer'
 export { default as RadioGroup } from './components/RadioGroup'
 export { RadioGroupItem } from './components/RadioGroup'
 export { default as Segment } from './components/Segment'
 export { default as Status } from './components/Status'
-export { default as TabBehavior } from './lib/accessibility/Behaviors/Tab/TabBehavior'
-export { default as TabListBehavior } from './lib/accessibility/Behaviors/Tab/TabListBehavior'
 export { default as Text } from './components/Text'
-export { default as ToolbarBehavior } from './lib/accessibility/Behaviors/Toolbar/ToolbarBehavior'
-export {
-  default as ToolbarButtonBehavior,
-} from './lib/accessibility/Behaviors/Toolbar/ToolbarButtonBehavior'
-export {
-  default as RadioGroupBehavior,
-} from './lib/accessibility/Behaviors/Radio/RadioGroupBehavior'
-export {
-  default as RadioGroupItemBehavior,
-} from './lib/accessibility/Behaviors/Radio/RadioGroupItemBehavior'
+
+//
+// Accessibility
+//
 export { default as ChatBehavior } from './lib/accessibility/Behaviors/Chat/ChatBehavior'
 export {
   default as ChatMessageBehavior,
@@ -51,7 +57,15 @@ export {
 export {
   default as ChatMessageBehaviorEnterEsc,
 } from './lib/accessibility/Behaviors/Chat/ChatMessageEnterEscBehavior'
-
-export { default as Portal } from './components/Portal'
-export { default as Popup } from './components/Popup'
-export { PopupContent } from './components/Popup'
+export { default as TabBehavior } from './lib/accessibility/Behaviors/Tab/TabBehavior'
+export { default as TabListBehavior } from './lib/accessibility/Behaviors/Tab/TabListBehavior'
+export { default as ToolbarBehavior } from './lib/accessibility/Behaviors/Toolbar/ToolbarBehavior'
+export {
+  default as ToolbarButtonBehavior,
+} from './lib/accessibility/Behaviors/Toolbar/ToolbarButtonBehavior'
+export {
+  default as RadioGroupBehavior,
+} from './lib/accessibility/Behaviors/Radio/RadioGroupBehavior'
+export {
+  default as RadioGroupItemBehavior,
+} from './lib/accessibility/Behaviors/Radio/RadioGroupItemBehavior'
