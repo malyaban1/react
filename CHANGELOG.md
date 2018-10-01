@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Features
 - Add focus styles for `Menu.Item` component @Bugaa92 ([#286](https://github.com/stardust-ui/react/pull/286))
+- Make theme variables and styles types extensible @levithomason ([#292](https://github.com/stardust-ui/react/pull/292))
 
 <!--------------------------------[ v0.8.0 ]------------------------------- -->
 ## [v0.8.0](https://github.com/stardust-ui/react/tree/v0.8.0) (2018-10-01)
