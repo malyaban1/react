@@ -60,6 +60,9 @@ export interface ICSSPseudoElementStyle extends ICSSInJSStyle {
 }
 
 export interface ICSSInJSStyle extends React.CSSProperties {
+  // TODO Questionable: how else would users target their own children?
+  [key: string]: any
+
   // missing React.CSSProperties
   speak?: CSSType.Globals | 'none' | 'normal' | 'spell-out'
 
